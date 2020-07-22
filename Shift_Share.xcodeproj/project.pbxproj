@@ -20,6 +20,8 @@
 		21B6A2AB24C6275A00146170 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B6A2AA24C6275A00146170 /* Constants.swift */; };
 		21B6A2AE24C6279500146170 /* loginbg.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 21B6A2AD24C6279500146170 /* loginbg.mp4 */; };
 		21B6A2B024C644D900146170 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21B6A2AF24C644D900146170 /* GoogleService-Info.plist */; };
+		21F08CE224C83ECB001254FD /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F08CE124C83ECB001254FD /* CalenderViewController.swift */; };
+		21F08CF924C87DC9001254FD /* ShiftUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F08CF824C87DC9001254FD /* ShiftUtil.swift */; };
 		9A3889C09FF225E32F7BCBDB /* Pods_Shift_Share.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546039DC16B8EC246840455B /* Pods_Shift_Share.framework */; };
 /* End PBXBuildFile section */
 
@@ -169,6 +171,8 @@
 		21B6A2AD24C6279500146170 /* loginbg.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loginbg.mp4; sourceTree = "<group>"; };
 		21B6A2AF24C644D900146170 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		21F08CA324C83CA6001254FD /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		21F08CE124C83ECB001254FD /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		21F08CF824C87DC9001254FD /* ShiftUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftUtil.swift; sourceTree = "<group>"; };
 		546039DC16B8EC246840455B /* Pods_Shift_Share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shift_Share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840007A766AAD8FFD7695E8A /* Pods-Shift_Share.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shift_Share.debug.xcconfig"; path = "Target Support Files/Pods-Shift_Share/Pods-Shift_Share.debug.xcconfig"; sourceTree = "<group>"; };
 		EB0D34D2AE09AF3B01C39D4F /* Pods-Shift-Share.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shift-Share.debug.xcconfig"; path = "Target Support Files/Pods-Shift-Share/Pods-Shift-Share.debug.xcconfig"; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 				21B6A2A124C6191400146170 /* LogInViewController.swift */,
 				21B6A2A324C6192200146170 /* HomeViewController.swift */,
 				21B6A28E24C612E800146170 /* ViewController.swift */,
+				21F08CE124C83ECB001254FD /* CalenderViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 			children = (
 				21B6A2A824C6275300146170 /* Utilities.swift */,
 				21B6A2AA24C6275A00146170 /* Constants.swift */,
+				21F08CF824C87DC9001254FD /* ShiftUtil.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -554,7 +560,9 @@
 				21B6A2A024C6190500146170 /* SignUpViewController.swift in Sources */,
 				21B6A2A224C6191400146170 /* LogInViewController.swift in Sources */,
 				21B6A28D24C612E800146170 /* SceneDelegate.swift in Sources */,
+				21F08CE224C83ECB001254FD /* CalenderViewController.swift in Sources */,
 				21B6A2A424C6192200146170 /* HomeViewController.swift in Sources */,
+				21F08CF924C87DC9001254FD /* ShiftUtil.swift in Sources */,
 				21B6A2AB24C6275A00146170 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
