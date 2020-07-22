@@ -1,7 +1,7 @@
 
 import Foundation
 
-class ShiftUtil{
+class ShiftUtil: Codable{
     
     var shift:String = ""
     var date: String = ""
