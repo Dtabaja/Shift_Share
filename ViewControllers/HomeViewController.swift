@@ -46,7 +46,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "ShiftList") as?ShiftTableViewCell
             
             cell?.shiftType.text = String(shiftList[indexPath.row].shift)
-            cell?.Date.text = String(shiftList[indexPath.row].date)
+       //     cell?.Date.text = String(shiftList[indexPath.row].date)
             
             return cell!
         }
