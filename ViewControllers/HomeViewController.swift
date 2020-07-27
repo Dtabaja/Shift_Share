@@ -8,10 +8,15 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController
+,UITableViewDataSource,
+UITableViewDelegate
+{
     
    var shiftCell: ShiftUtil?
    var shiftList:[ShiftUtil] = [ShiftUtil]()
+   var startShift:String = ""
+   var endShift:String = ""
    
     @IBOutlet weak var tableView: UITableView!
     let dataID = "key"
@@ -19,8 +24,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.reloadData()
+      //  tableView.reloadData()
         // Do any additional setup after loading the view.
+     //   ShowShiftTable()
+        print(startShift)
+        print(endShift)
     }
     
 
@@ -35,79 +43,95 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     */
      
         
-       
+
         //MARK: Delegate & DataSource Functions
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return shiftList.count
         }
-        
+
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
+
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "ShiftList") as?ShiftTableViewCell
+            addToShiftList()
+            cell?.startShiftLabel.text = String(shiftList[indexPath.row].startDate)
+            cell?.endShiftLabel.text = String(shiftList[indexPath.row].endDate)
+            print(cell?.startShiftLabel.text)
+            print(cell?.endShiftLabel.text)
             
-            cell?.shiftType.text = String(shiftList[indexPath.row].shift)
-       //     cell?.Date.text = String(shiftList[indexPath.row].date)
-            
+
             return cell!
         }
-        
-        func ShowHighScoreTable(){
-            self.shiftList = readFromUserDF()
-            if(shiftCell != nil){
-                appendToShiftList(shiftCell:shiftCell!)
-            }
-            
-            
-        }
-        //MARK: UserDefaults Functions
-        func readFromUserDF()-> [ShiftUtil]{
-            if let data = UserDefaults.standard.data(forKey: dataID){
-                do{
-                    let JSONdecoder = JSONDecoder()
-                    self.shiftList =
-                        try
-                            JSONdecoder.decode([ShiftUtil].self, from: data)
-                    return self.shiftList
-                }catch{
-                    print("can't read from UserDefaults")
-                }
-                
-            }
-            return [ShiftUtil]()
-        }
-        
-        func writeToUserDF(highScoreListarray:[ShiftUtil]){
-            do{
-                let JSONencoder = JSONEncoder()
-                let data =
-                    try
-                        JSONencoder.encode(highScoreListarray)
-                UserDefaults.standard.set(data, forKey: dataID)
-                self.shiftList = readFromUserDF()
-            }catch{
-                print("can't write to UserDefaults")
-            }
-            
-            
-        }
+    func addToShiftList(){
+        shiftCell?.startDate = startShift
+        shiftCell?.endDate = endShift
+    }
+
+//        func ShowShiftTable(){
+//            shiftCell?.startDate = startShift
+//            shiftCell?.endDate = endShift
+//            shiftList.append(shiftCell!)
+//
+//
+////            self.shiftList = readFromUserDF()
+////            if(shiftCell != nil){
+////            appendToShiftList(shiftCell:shiftCell!)
+////
+////            }
+//
+//
+//        }
+//        //MARK: UserDefaults Functions
+//        func readFromUserDF()-> [ShiftUtil]{
+//            if let data = UserDefaults.standard.data(forKey: dataID){
+//                do{
+//                    let JSONdecoder = JSONDecoder()
+//                    self.shiftList =
+//                        try
+//                            JSONdecoder.decode([ShiftUtil].self, from: data)
+//                    return self.shiftList
+//                }catch{
+//                    print("can't read from UserDefaults")
+//                }
+//
+//            }
+//            return [ShiftUtil]()
+//        }
+//
+//        func writeToUserDF(ShiftListarray:[ShiftUtil]){
+//            do{
+//                let JSONencoder = JSONEncoder()
+//                let data =
+//                    try
+//                        JSONencoder.encode(ShiftListarray)
+//                UserDefaults.standard.set(data, forKey: dataID)
+//                self.shiftList = readFromUserDF()
+//            }catch{
+//                print("can't write to UserDefaults")
+//            }
+//
+//
+//        }
         //MARK: appand and update score list
         func appendToShiftList(shiftCell:ShiftUtil){
-            if(shiftList.count<10){
                 self.shiftList.append(shiftCell)
                 //bsortHighScoreList()
-                writeToUserDF(highScoreListarray: self.shiftList)
-            }
+               // writeToUserDF(highScoreListarray: self.shiftList)
+            
         }
-       
-        
-        
-       
-          }
+
+
+
+}
+
 
     //MARK: Inner Class
     class ShiftTableViewCell
     : UITableViewCell{
         
-        @IBOutlet weak var shiftType: UILabel!
-        @IBOutlet weak var Date: UILabel!
+        @IBOutlet weak var startShiftLabel: UILabel!
+        
+        @IBOutlet weak var endShiftLabel: UILabel!
+        
+       
+        
 }

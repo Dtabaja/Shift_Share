@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21AC055A24CD99DA00AA9016 /* CreateShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AC055924CD99DA00AA9016 /* CreateShiftViewController.swift */; };
 		21B6A28B24C612E800146170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B6A28A24C612E800146170 /* AppDelegate.swift */; };
 		21B6A28D24C612E800146170 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B6A28C24C612E800146170 /* SceneDelegate.swift */; };
 		21B6A28F24C612E800146170 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B6A28E24C612E800146170 /* ViewController.swift */; };
@@ -155,6 +156,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21AC055924CD99DA00AA9016 /* CreateShiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateShiftViewController.swift; sourceTree = "<group>"; };
 		21B6A28724C612E800146170 /* Shift_Share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shift_Share.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B6A28A24C612E800146170 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21B6A28C24C612E800146170 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				21B6A2A324C6192200146170 /* HomeViewController.swift */,
 				21B6A28E24C612E800146170 /* ViewController.swift */,
 				21F08CE124C83ECB001254FD /* CalenderViewController.swift */,
+				21AC055924CD99DA00AA9016 /* CreateShiftViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				21B6A2A424C6192200146170 /* HomeViewController.swift in Sources */,
 				21F08CF924C87DC9001254FD /* ShiftUtil.swift in Sources */,
 				21B6A2AB24C6275A00146170 /* Constants.swift in Sources */,
+				21AC055A24CD99DA00AA9016 /* CreateShiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

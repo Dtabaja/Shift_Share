@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="07o-Rd-0PO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7uo-NY-ncY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -162,11 +162,11 @@
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="07o-Rd-0PO" customClass="HomeViewController" customModule="Shift_Share" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VEZ-Bz-BZv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="peN-6V-ZDR">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hfj-v9-YjP">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -188,7 +188,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qSm-ig-5S2">
-                                        <rect key="frame" x="0.0" y="30" width="414" height="778"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="812"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShiftList" id="PW3-bw-0a7" customClass="ShiftTableViewCell" customModule="Shift_Share" customModuleProvider="target">
@@ -201,14 +201,14 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="aAP-iD-MIp">
                                                             <rect key="frame" x="20" y="0.0" width="394" height="20.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shift Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVL-va-hWM">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shift Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVL-va-hWM">
                                                                     <rect key="frame" x="0.0" y="0.0" width="77.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcb-Dg-JEA" userLabel="Date">
-                                                                    <rect key="frame" x="358" y="0.0" width="36" height="20.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shift End" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcb-Dg-JEA" userLabel="Date">
+                                                                    <rect key="frame" x="324.5" y="0.0" width="69.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -223,8 +223,8 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="Date" destination="dcb-Dg-JEA" id="drL-oh-yQT"/>
-                                                    <outlet property="shiftType" destination="iVL-va-hWM" id="3t3-RY-dAE"/>
+                                                    <outlet property="endShiftLabel" destination="dcb-Dg-JEA" id="FTz-jU-fFf"/>
+                                                    <outlet property="startShiftLabel" destination="iVL-va-hWM" id="vnv-h3-Tyc"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -382,21 +382,21 @@
             <objects>
                 <viewController id="t3T-xb-VrR" customClass="CalenderViewController" customModule="Shift_Share" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X1e-5Q-Jfn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TJ8-Kb-bOy">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iO9-EK-f5O" customClass="FSCalendar">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="LnN-ng-nLf"/>
+                                            <constraint firstAttribute="height" constant="250" id="LnN-ng-nLf"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C7E-4r-ldK">
-                                        <rect key="frame" x="0.0" y="300" width="414" height="474"/>
+                                        <rect key="frame" x="0.0" y="250" width="414" height="558"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShiftList" id="rHg-TP-ly3" customClass="HighScoreTableViewCell" customModule="Shift_Share" customModuleProvider="target">
@@ -455,16 +455,16 @@
             </objects>
             <point key="canvasLocation" x="7040.579710144928" y="-337.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Shift View Controller-->
         <scene sceneID="W5q-Ez-Iye">
             <objects>
-                <viewController id="7uo-NY-ncY" sceneMemberID="viewController">
+                <viewController id="7uo-NY-ncY" customClass="CreateShiftViewController" customModule="Shift_Share" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VY6-Pq-eUA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bln-X3-ojv">
-                                <rect key="frame" x="0.0" y="88" width="414" height="633"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="633"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Shift" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5N-Ui-bcU">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
@@ -489,6 +489,9 @@
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="x3i-AW-6iL">
                                                 <rect key="frame" x="0.0" y="79" width="414" height="216"/>
+                                                <connections>
+                                                    <action selector="startdateSelectedFromDatePicker:" destination="7uo-NY-ncY" eventType="valueChanged" id="Hh9-dR-9pr"/>
+                                                </connections>
                                             </datePicker>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Shift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9f9-0w-SPt">
                                                 <rect key="frame" x="0.0" y="305" width="414" height="69"/>
@@ -505,6 +508,9 @@
                                                     <constraint firstAttribute="height" constant="150" id="ZSh-ID-Umg"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="jGy-cP-uPV"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="enddateSelectedFromDatePicker:" destination="7uo-NY-ncY" eventType="valueChanged" id="0Tm-by-cW9"/>
+                                                </connections>
                                             </datePicker>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQB-1N-2uA">
                                                 <rect key="frame" x="0.0" y="544" width="414" height="44"/>
@@ -513,6 +519,10 @@
                                                 <state key="normal" title="Save">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="saveTapped:" destination="7uo-NY-ncY" eventType="touchUpInside" id="RCl-qI-cyO"/>
+                                                    <segue destination="07o-Rd-0PO" kind="show" identifier="BackToHome" id="C55-OK-4ht"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -530,6 +540,11 @@
                         <viewLayoutGuide key="safeArea" id="BXZ-gX-ln8"/>
                     </view>
                     <navigationItem key="navigationItem" id="emC-rR-lEG"/>
+                    <connections>
+                        <outlet property="endDatePicker" destination="aDa-QX-URN" id="Zy9-vb-xaK"/>
+                        <outlet property="saveButton" destination="wQB-1N-2uA" id="Jm9-Kv-4nK"/>
+                        <outlet property="startDatePicker" destination="x3i-AW-6iL" id="rdF-W3-9c7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15d-cp-Mmt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -537,6 +552,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qNk-Tv-NJO"/>
+        <segue reference="C55-OK-4ht"/>
     </inferredMetricsTieBreakers>
 </document>
