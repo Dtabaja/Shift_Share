@@ -8,67 +8,80 @@
 
 import UIKit
 
-class CreateShiftViewController: UIViewController {
+class CreateShiftViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var saveButton: UIButton!
+    // @IBOutlet weak var saveButton: UIButton!
     
     @IBOutlet weak var startDatePicker: UIDatePicker!
     
+    @IBOutlet weak var NameText: UITextField!
     @IBOutlet weak var endDatePicker: UIDatePicker!
-    var startShift:String = ""
-    var endShift:String = ""
+    
+    public var completion: ((String, Date, Date) -> Void)?
+    // var startShift:String = ""
+    //   var endShift:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        let formatter = DateFormatter()
-        //        formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM"
-        //        startShift = formatter.string(from: startDatePicker.date)
-        //        endShift = formatter.string(from: endDatePicker.date)
-        //               // Do any additional setup after loading the view.
+        NameText.delegate = self
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSaveButton))
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    @IBAction func startdateSelectedFromDatePicker(_ : AnyObject){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM"
-        startShift = formatter.string(from: startDatePicker.date)
-        
-    }
-    @IBAction func enddateSelectedFromDatePicker(_ : AnyObject){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM"
-        endShift = formatter.string(from: endDatePicker.date)
-        
-    }
-    @IBAction func saveTapped(_ sender: Any) {
-        
-//        if(startShift>endShift){
-//            print("error")
-//            return
-//            //   print(self.startShift)
-//            //   print(self.endShift)
-//
-//
-//        }else{
-            self.performSegue(withIdentifier: "BackToHome", sender: self)
-//        }
-    }
-    //MARK: Navigation == Intent(Android)
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "BackToHome"){
-            let saveView = segue.destination as! HomeViewController
-            saveView.startShift = self.startShift
-            saveView.endShift = self.endShift
+    @objc func didTapSaveButton() {
+        if let titleText = NameText.text, !titleText.isEmpty
             
-        } 
+        {
+            
+            let startDate = startDatePicker.date
+            let endDate = endDatePicker.date
+            completion?(titleText,startDate,endDate)
+            
+        }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
 }
+
+
+
+//
+//    @IBAction func startdateSelectedFromDatePicker(_ : AnyObject){
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM"
+//        startShift = formatter.string(from: startDatePicker.date)
+//
+//    }
+//    @IBAction func enddateSelectedFromDatePicker(_ : AnyObject){
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM"
+//        endShift = formatter.string(from: endDatePicker.date)
+//
+//    }
+//    @IBAction func saveTapped(_ sender: Any) {
+//
+////        if(startShift>endShift){
+////            print("error")
+////            return
+////            //   print(self.startShift)
+////            //   print(self.endShift)
+////
+////
+////        }else{
+//            self.performSegue(withIdentifier: "BackToHome", sender: self)
+////        }
+//    }
+//    //MARK: Navigation == Intent(Android)
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if(segue.identifier == "BackToHome"){
+//            let saveView = segue.destination as! HomeViewController
+//            saveView.startShift = self.startShift
+//            saveView.endShift = self.endShift
+//
+//        }
+//    }
+
