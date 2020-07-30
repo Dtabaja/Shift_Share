@@ -25,14 +25,14 @@
                                         </constraints>
                                         <state key="normal" title="SignUp"/>
                                         <connections>
-                                            <segue destination="aOh-tM-hrS" kind="show" id="suL-xA-tMT"/>
+                                            <action selector="signUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GJu-IO-FQC"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsu-jS-fYu">
                                         <rect key="frame" x="0.0" y="70" width="334" height="30"/>
                                         <state key="normal" title="LogIn"/>
                                         <connections>
-                                            <segue destination="Sf0-dq-3y5" kind="show" id="K1M-Oq-b2r"/>
+                                            <action selector="logInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BZu-lw-9AX"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -51,8 +51,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="aaH-S7-1xI"/>
                     <connections>
-                        <outlet property="logInButton" destination="gsu-jS-fYu" id="I7S-Te-090"/>
-                        <outlet property="signUpButton" destination="7wF-37-rTj" id="HlP-CS-JQl"/>
+                        <outlet property="logInButton" destination="gsu-jS-fYu" id="j0t-pP-Yf9"/>
+                        <outlet property="signUpButton" destination="7wF-37-rTj" id="ZFD-5W-sHK"/>
+                        <segue destination="Sf0-dq-3y5" kind="show" identifier="LogIn" id="veu-lz-sev"/>
+                        <segue destination="aOh-tM-hrS" kind="show" identifier="SignUp" id="XPt-9z-VhW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -117,7 +119,6 @@
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
                                             <action selector="signUpTapped:" destination="aOh-tM-hrS" eventType="touchUpInside" id="weh-rk-rJ4"/>
-                                            <segue destination="07o-Rd-0PO" kind="show" id="qNk-Tv-NJO"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq1-Uy-t2v">
@@ -151,6 +152,7 @@
                         <outlet property="lastNameTextField" destination="bh2-qt-R6B" id="mzg-gl-vpK"/>
                         <outlet property="passwordTextField" destination="DHj-wo-QEG" id="JKV-at-GAd"/>
                         <outlet property="signUpButton" destination="8ay-TI-zuO" id="gux-Pm-SMf"/>
+                        <segue destination="07o-Rd-0PO" kind="show" identifier="signUpHome" id="6oA-zD-gL4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyx-Z0-XqB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -162,31 +164,31 @@
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="07o-Rd-0PO" customClass="HomeViewController" customModule="Shift_Share" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VEZ-Bz-BZv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="peN-6V-ZDR">
-                                <rect key="frame" x="0.0" y="88" width="240" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="808"/>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qSm-ig-5S2">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shiftCell" textLabel="qFX-L3-HP5" detailTextLabel="Tny-Z8-k7n" style="IBUITableViewCellStyleSubtitle" id="0Jg-gi-0PH">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shiftCell" textLabel="sjn-8z-dU6" detailTextLabel="n54-zq-8El" style="IBUITableViewCellStyleSubtitle" id="0Jg-gi-0PH">
                                         <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Jg-gi-0PH" id="3aL-nI-ze0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qFX-L3-HP5">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sjn-8z-dU6">
                                                     <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tny-Z8-k7n">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n54-zq-8El">
                                                     <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -228,72 +230,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="qSm-ig-5S2" id="1zJ-v7-ZPA"/>
+                        <segue destination="7uo-NY-ncY" kind="show" identifier="add" id="iRj-fg-0iG"/>
+                        <segue destination="t3T-xb-VrR" kind="show" identifier="calender" id="vv2-YP-l57"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hp-81-Lh2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6166.666666666667" y="-916.07142857142856"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="0ji-lF-lfV">
-            <objects>
-                <viewController id="LGZ-Lp-Xmo" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zhW-ID-Yj7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Nan-Td-aOD">
-                                <rect key="frame" x="0.0" y="44" width="414" height="265"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Aw-iD-eKz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="PA8-Vt-oea"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="Morning Shift">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CV-Wl-6Fo">
-                                        <rect key="frame" x="0.0" y="90" width="414" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="Evening Shift">
-                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePg-9W-SDh">
-                                        <rect key="frame" x="0.0" y="160" width="414" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="Night Shift"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFC-Tw-xzR">
-                                        <rect key="frame" x="0.0" y="230" width="414" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="Save">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="ePg-9W-SDh" firstAttribute="height" secondItem="9Aw-iD-eKz" secondAttribute="height" multiplier="0.6" id="CZB-nL-x0X"/>
-                                    <constraint firstItem="3CV-Wl-6Fo" firstAttribute="height" secondItem="9Aw-iD-eKz" secondAttribute="height" multiplier="0.6" id="Pqo-OF-Vp7"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="3iF-Cq-c5M" firstAttribute="trailing" secondItem="Nan-Td-aOD" secondAttribute="trailing" id="SEM-TH-px0"/>
-                            <constraint firstItem="Nan-Td-aOD" firstAttribute="leading" secondItem="3iF-Cq-c5M" secondAttribute="leading" id="iEk-9G-XCP"/>
-                            <constraint firstItem="Nan-Td-aOD" firstAttribute="top" secondItem="3iF-Cq-c5M" secondAttribute="top" id="mej-p8-dty"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="3iF-Cq-c5M"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="DrT-fq-ioS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="APP-XL-art" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6583" y="-1803"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="jj0-hf-9AQ">
@@ -306,12 +249,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PbC-Fy-CAq">
                                 <rect key="frame" x="40" y="128" width="334" height="230.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test@t.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kTR-jI-5hB">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kTR-jI-5hB">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1234Dt!" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ind-WB-QJX">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ind-WB-QJX">
                                         <rect key="frame" x="0.0" y="70" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -325,7 +268,6 @@
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <action selector="logInButtonTapped:" destination="Sf0-dq-3y5" eventType="touchUpInside" id="7Y9-62-njY"/>
-                                            <segue destination="07o-Rd-0PO" kind="show" id="0Rs-by-HXQ"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3A-XJ-ZqP">
@@ -355,6 +297,7 @@
                         <outlet property="errorLabel" destination="B3A-XJ-ZqP" id="yoV-ms-4EO"/>
                         <outlet property="logInButton" destination="Elc-ww-z8z" id="zdX-dS-eJX"/>
                         <outlet property="passwordTextField" destination="Ind-WB-QJX" id="UjT-Th-Pnz"/>
+                        <segue destination="07o-Rd-0PO" kind="show" identifier="logInHome" id="5eb-qa-IDf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Jy-gZ-CXe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -364,13 +307,13 @@
         <!--Calender View Controller-->
         <scene sceneID="Mrd-jV-rDe">
             <objects>
-                <viewController storyboardIdentifier="calender" id="t3T-xb-VrR" customClass="CalenderViewController" customModule="Shift_Share" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="t3T-xb-VrR" customClass="CalenderViewController" customModule="Shift_Share" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X1e-5Q-Jfn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TJ8-Kb-bOy">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iO9-EK-f5O" customClass="FSCalendar">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
@@ -380,7 +323,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C7E-4r-ldK">
-                                        <rect key="frame" x="0.0" y="250" width="414" height="568"/>
+                                        <rect key="frame" x="0.0" y="250" width="414" height="558"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShiftList" id="rHg-TP-ly3" customClass="HighScoreTableViewCell" customModule="Shift_Share" customModuleProvider="target">
@@ -442,13 +385,13 @@
         <!--Create Shift View Controller-->
         <scene sceneID="W5q-Ez-Iye">
             <objects>
-                <viewController storyboardIdentifier="add" id="7uo-NY-ncY" customClass="CreateShiftViewController" customModule="Shift_Share" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7uo-NY-ncY" customClass="CreateShiftViewController" customModule="Shift_Share" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VY6-Pq-eUA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NZH-yt-9wI">
-                                <rect key="frame" x="0.0" y="54" width="414" height="644"/>
+                                <rect key="frame" x="0.0" y="10" width="414" height="798"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zH9-oe-iRU" userLabel="Text Field">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -468,10 +411,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="x3i-AW-6iL">
-                                        <rect key="frame" x="0.0" y="139" width="414" height="216"/>
+                                        <rect key="frame" x="0.0" y="139" width="414" height="370"/>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Shift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9f9-0w-SPt">
-                                        <rect key="frame" x="0.0" y="365" width="414" height="69"/>
+                                        <rect key="frame" x="0.0" y="519" width="414" height="69"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="69" id="o54-Zz-e20"/>
                                         </constraints>
@@ -480,7 +423,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aDa-QX-URN">
-                                        <rect key="frame" x="0.0" y="444" width="414" height="200"/>
+                                        <rect key="frame" x="0.0" y="598" width="414" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="CH9-Eb-nU3"/>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="HAT-xw-X2c"/>
@@ -491,7 +434,6 @@
                                 <constraints>
                                     <constraint firstItem="zH9-oe-iRU" firstAttribute="trailing" secondItem="NZH-yt-9wI" secondAttribute="trailingMargin" id="4eX-Vc-ppF"/>
                                     <constraint firstItem="x3i-AW-6iL" firstAttribute="leading" secondItem="NZH-yt-9wI" secondAttribute="leadingMargin" id="8UF-LB-YSr"/>
-                                    <constraint firstAttribute="height" constant="700" id="95m-yI-TER"/>
                                     <constraint firstItem="x3i-AW-6iL" firstAttribute="trailing" secondItem="NZH-yt-9wI" secondAttribute="trailingMargin" id="BJJ-g1-Af6"/>
                                     <constraint firstItem="zH9-oe-iRU" firstAttribute="leading" secondItem="NZH-yt-9wI" secondAttribute="leadingMargin" id="PEi-Ht-ikl"/>
                                     <constraint firstItem="9f9-0w-SPt" firstAttribute="leading" secondItem="NZH-yt-9wI" secondAttribute="leadingMargin" id="mKa-OH-mpx"/>
@@ -508,11 +450,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BXZ-gX-ln8"/>
                     </view>
-                    <navigationItem key="navigationItem" id="emC-rR-lEG"/>
+                    <navigationItem key="navigationItem" id="emC-rR-lEG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="SAw-b6-cd7">
+                            <connections>
+                                <action selector="saveClicked:" destination="7uo-NY-ncY" id="VBA-I0-Dez"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="NameText" destination="zH9-oe-iRU" id="73R-Do-3B5"/>
                         <outlet property="endDatePicker" destination="aDa-QX-URN" id="Zy9-vb-xaK"/>
                         <outlet property="startDatePicker" destination="x3i-AW-6iL" id="rdF-W3-9c7"/>
+                        <segue destination="07o-Rd-0PO" kind="show" identifier="Save" id="FTh-yW-2pk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15d-cp-Mmt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -521,6 +470,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0Rs-by-HXQ"/>
+        <segue reference="FTh-yW-2pk"/>
     </inferredMetricsTieBreakers>
 </document>

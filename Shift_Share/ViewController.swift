@@ -16,8 +16,10 @@ class ViewController: UIViewController {
     
     var videoPlayerLayer:AVPlayerLayer?
     
+    
     @IBOutlet weak var signUpButton: UIButton!
-
+    
+    
     @IBOutlet weak var logInButton: UIButton!
     
     override func viewDidLoad() {
@@ -70,5 +72,23 @@ class ViewController: UIViewController {
                 videoPlayer?.playImmediately(atRate: 0.3)
             }
 
-
+    @IBAction func signUpButton(_ sender: Any) {
+  self.performSegue(withIdentifier: "SignUp", sender: self)
+    }
+    
+    @IBAction func logInButton(_ sender: Any) {
+          self.performSegue(withIdentifier: "LogIn", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if segue.identifier=="SignUp"{
+          _ = segue.destination as! SignUpViewController
+      }
+        else if segue.identifier=="LogIn"
+      {        _ = segue.destination as! LogInViewController
+        
+    }
+      else {
+        return
         }
+}
+}

@@ -15,44 +15,68 @@ class HomeViewController: UIViewController
       @IBOutlet weak var tableView: UITableView!
 
         var ShiftList = [MyShifts]()
+        var name:String = ""
+        var startDate = Date()
+        var endDate = Date()
 
         override func viewDidLoad() {
             super.viewDidLoad()
             tableView.delegate = self
             tableView.dataSource = self
+            tableView.reloadData()
+            addtoTable()
         }
-
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
         @IBAction func didTapAdd() {
             // show add vc
-            guard let vc = storyboard?.instantiateViewController(identifier: "add") as? CreateShiftViewController else {
-                return
+           // guard let vc = storyboard?.instantiateViewController(identifier: "add") as? CreateShiftViewController else {
+             //   return
+            //}
+            self.performSegue(withIdentifier: "add", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier=="add"{
+               _ = segue.destination as? CreateShiftViewController
+            if segue.identifier=="calender"{
+                _ = segue.destination as? CalenderViewController
             }
-
-            vc.title = "Create New Shift"
-            vc.navigationItem.largeTitleDisplayMode = .never
-            vc.completion = { title, startDate, endDate in
-                DispatchQueue.main.async {
-                    self.navigationController?.popToRootViewController(animated: true)
-                    let new = MyShifts(Name: title, startDate: startDate, endDate: endDate)
-                    self.ShiftList.append(new)
-                    self.tableView.reloadData()
+         //   vc.title = "Create New Shift"
+       //     vc.navigationItem.largeTitleDisplayMode = .never
+           // vc.completion = { title, startDate, endDate in
+            //   DispatchQueue.main.async {
+                    //self.navigationController?.popToRootViewController(animated: true)
+//                    
+//                    let new = MyShifts(Name: self.name, startDate: self.startDate, endDate: self.endDate)
+//                    self.ShiftList.append(new)
+//                    self.tableView.reloadData()
 
                   
-                }
-            }
-            navigationController?.pushViewController(vc, animated: true)
+              //  }
+           // }
+         //   navigationController?.pushViewController(vc, animated: true)
 
         }
+    }
+    func addtoTable(){
+        let new = MyShifts(Name: self.name, startDate: self.startDate, endDate: self.endDate)
+        self.ShiftList.append(new)
+        
+    }
 
         @IBAction func didTppedCalender() {
             //TODO: move to calender
-            guard let vc1 = storyboard?.instantiateViewController(identifier: "calender") as? CalenderViewController else {
-                return
-            }
-             vc1.title = "Calender"
-             vc1.navigationItem.largeTitleDisplayMode = .never
-            navigationController?.pushViewController(vc1, animated: true)
+            self.performSegue(withIdentifier: "calender", sender: self)
+//            guard let vc1 = storyboard?.instantiateViewController(identifier: "calender") as? CalenderViewController else {
+//                return
+//            }
+//             vc1.title = "Calender"
+//             vc1.navigationItem.largeTitleDisplayMode = .never
+//            navigationController?.pushViewController(vc1, animated: true)
         }
+    
 
       
 
@@ -84,12 +108,16 @@ class HomeViewController: UIViewController
             
 
             let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM"
-            cell.textLabel?.text = formatter.string(from: endShift)
-            cell.detailTextLabel?.text = formatter.string(from: startShift)
+            let formatter2 = DateFormatter()
+            
+            formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
+            formatter2.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
 
-            cell.textLabel?.font = UIFont(name: "Arial", size: 25)
-            cell.detailTextLabel?.font = UIFont(name: "Arial", size: 25)
+            cell.textLabel?.text = formatter.string(from: startShift)
+            cell.detailTextLabel?.text = formatter2.string(from: endShift)
+
+            cell.textLabel?.font = UIFont(name: "Arial", size: 15)
+            cell.detailTextLabel?.font = UIFont(name: "Arial", size: 15)
             
             return cell
         }

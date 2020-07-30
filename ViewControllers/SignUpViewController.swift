@@ -105,7 +105,8 @@ class SignUpViewController: UIViewController {
                            }
                            
                            // Transition to the home screen
-                           self.transitionToHome()
+                          // self.transitionToHome()
+                         self.performSegue(withIdentifier: "signUpHome", sender: self)
                        }
                        
                    }
@@ -121,14 +122,21 @@ class SignUpViewController: UIViewController {
                errorLabel.alpha = 1
            }
            
-           func transitionToHome() {
-               
-               let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
-               
-               view.window?.rootViewController = homeViewController
-               view.window?.makeKeyAndVisible()
-               
-           }
+//           func transitionToHome() {
+//
+//               let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+//
+//               view.window?.rootViewController = homeViewController
+//               view.window?.makeKeyAndVisible()
+//
+//           }
+       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier=="signUpHome"{
+            _ = segue.destination as! HomeViewController
+            }
+        
+    }
+    
     
     
 }
