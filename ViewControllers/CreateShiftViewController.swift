@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class CreateShiftViewController: UIViewController, UITextFieldDelegate {
     
@@ -16,6 +18,8 @@ class CreateShiftViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var NameText: UITextField!
     @IBOutlet weak var endDatePicker: UIDatePicker!
+    var db = Firestore.firestore()
+    
     
     public var completion: ((String, Date, Date) -> Void)?
     // var startShift:String = ""
@@ -31,17 +35,17 @@ class CreateShiftViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @objc func didTapSaveButton() {
-        if let titleText = NameText.text, !titleText.isEmpty
-            
-        {
-            
-            let startDate = startDatePicker.date
-            let endDate = endDatePicker.date
-            completion?(titleText,startDate,endDate)
-         _ = navigationController?.popViewController(animated: true)
-        }
-    }
+//    @objc func didTapSaveButton() {
+//        if let titleText = NameText.text, !titleText.isEmpty
+//
+//        {
+//
+//            let startDate = startDatePicker.date
+//            let endDate = endDatePicker.date
+//            completion?(titleText,startDate,endDate)
+//         _ = navigationController?.popViewController(animated: true)
+//        }
+//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -55,17 +59,25 @@ class CreateShiftViewController: UIViewController, UITextFieldDelegate {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="Save"{
-            let homeViewController = segue.destination as? HomeViewController
-            if let titleText = NameText.text, !titleText.isEmpty
-                      
-                  {
-            let startDate = startDatePicker.date
-            let endDate = endDatePicker.date
-            completion?(titleText,startDate,endDate)
-            }
-            homeViewController?.startDate = startDatePicker.date
-            homeViewController?.endDate = endDatePicker.date
-            homeViewController!.name = NameText.text!
+          //  let homeViewController = segue.destination as? HomeViewController
+//            if let titleText = NameText.text, !titleText.isEmpty
+//
+//                  {
+//            let startDate = startDatePicker.date
+//            let endDate = endDatePicker.date
+//            completion?(titleText,startDate,endDate)
+//            }
+//            homeViewController?.startDate = startDatePicker.date
+//            homeViewController?.endDate = endDatePicker.date
+//            homeViewController!.name = NameText.text!
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
+            let startDate1 = formatter.string(from: startDatePicker.date)
+            let endDate1 = formatter.string(from: endDatePicker.date)
+
+            db.collection("Shifts").addDocument(data:["Start Shift" : startDate1,"End Shift":endDate1, "Name": NameText.text!, "uid": Auth.auth().currentUser!.uid])
+            
+            
             }
         
     }

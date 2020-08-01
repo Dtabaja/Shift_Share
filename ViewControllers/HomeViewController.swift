@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class HomeViewController: UIViewController
 {
@@ -18,13 +20,16 @@ class HomeViewController: UIViewController
         var name:String = ""
         var startDate = Date()
         var endDate = Date()
+        var userId = ""
+        var db = Firestore.firestore()
 
         override func viewDidLoad() {
             super.viewDidLoad()
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.reloadData()
             addtoTable()
+            tableView.reloadData()
+            
         }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -61,8 +66,25 @@ class HomeViewController: UIViewController
         }
     }
     func addtoTable(){
-        let new = MyShifts(Name: self.name, startDate: self.startDate, endDate: self.endDate)
-        self.ShiftList.append(new)
+      //  let new = MyShifts(Name: self.name, startDate: self.startDate, endDate: self.endDate)
+        db.collection("Shifts").whereField("uid", isEqualTo: Auth.auth().currentUser!.uid).getDocuments { (querySnapshot, error) in
+            if error != nil {
+                return
+            }else{
+                for document in querySnapshot!.documents{
+                    let name = document.get("Name") as! String
+                    let startShiftDate = document.get("Start Shift") as! String
+                    let endShiftDate = document.get("End Shift") as! String
+                    let uid = document.get("uid") as! String
+                    self.ShiftList.append(MyShifts(Name: name, startDate: startShiftDate, endDate: endShiftDate, uid: uid))
+                    print(self.ShiftList)
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
         
     }
 
@@ -103,8 +125,9 @@ class HomeViewController: UIViewController
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "shiftCell", for: indexPath)
-            let startShift = ShiftList[indexPath.row].startDate
-            let endShift = ShiftList[indexPath.row].endDate
+            
+            let startShift = self.ShiftList[indexPath.row].startDate
+            let endShift = self.ShiftList[indexPath.row].endDate
             
 
             let formatter = DateFormatter()
@@ -113,9 +136,11 @@ class HomeViewController: UIViewController
             formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
             formatter2.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
 
-            cell.textLabel?.text = formatter.string(from: startShift)
-            cell.detailTextLabel?.text = formatter2.string(from: endShift)
-
+//            cell.textLabel?.text = formatter.string(from: startShift)
+//            cell.detailTextLabel?.text = formatter2.string(from: endShift)
+            
+             cell.textLabel?.text = startShift
+             cell.detailTextLabel?.text = endShift
             cell.textLabel?.font = UIFont(name: "Arial", size: 15)
             cell.detailTextLabel?.font = UIFont(name: "Arial", size: 15)
             
@@ -127,8 +152,9 @@ class HomeViewController: UIViewController
 
     struct MyShifts {
         let Name: String
-        let startDate: Date
-        let endDate: Date
+        let startDate: String
+        let endDate: String
+        let uid: String
     
 }
 //   var shiftCell: ShiftUtil?
