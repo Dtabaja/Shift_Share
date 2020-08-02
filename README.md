@@ -18,4 +18,9 @@ Comment to guy
 Hope you enjoy.
 
 <img src="LogIn.jpg" width="200" height="400">
-
+<img src="SignIn.jpg" width="200" height="400">
+<img src="Shift_Table.jpg" width="200" height="400">
+<img src="HorizontalShiftTable.jpg" width="200" height="400">
+<img src="AddShift.jpg" width="200" height="400">
+<img src="Calender+ShiftTable.jpg" width="200" height="400">
+<img src="Popup.jpg" width="200" height="400">
