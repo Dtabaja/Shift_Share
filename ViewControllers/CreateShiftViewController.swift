@@ -12,7 +12,7 @@ import FirebaseAuth
 
 class CreateShiftViewController: UIViewController, UITextFieldDelegate {
     
-  
+    
     
     @IBOutlet weak var startDatePicker: UIDatePicker!
     
@@ -20,19 +20,18 @@ class CreateShiftViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var endDatePicker: UIDatePicker!
     var db = Firestore.firestore()
     
-  
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NameText.delegate = self
-      //  navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSaveButton))
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -46,19 +45,19 @@ class CreateShiftViewController: UIViewController, UITextFieldDelegate {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="Save"{
-
+            
             let formatterStart = DateFormatter()
             let formatterEnd = DateFormatter()
             let formatterCalender = DateFormatter()
             let formatterHourStart = DateFormatter()
             let formatterHourEnd = DateFormatter()
-
+            
             formatterStart.dateFormat = "'Start Shift: 'EEEE dd/MM/yyyy  HH:MM a"
             formatterEnd.dateFormat = "'End Shift: ' EEEE dd/MM/yyyy  HH:MM a"
             formatterCalender.dateFormat = "EEEE dd/MM/yyyy"
             formatterHourStart.dateFormat = "'Start:'HH:MM a"
             formatterHourEnd.dateFormat = "'End:'EEEE HH:MM a"
-
+            
             let startDate1 = formatterStart.string(from: startDatePicker.date)
             let endDate1 = formatterEnd.string(from: endDatePicker.date)
             
@@ -67,12 +66,10 @@ class CreateShiftViewController: UIViewController, UITextFieldDelegate {
             
             let startHour = formatterHourStart.string(from: startDatePicker.date)
             let endHour = formatterHourEnd.string(from: endDatePicker.date)
-
+            
             db.collection("Shifts").addDocument(data:["Start Shift" : startDate1,"End Shift":endDate1,"Start Date" : startDate2,"End Date":endDate2,"Start Hour" : startHour,"End Hour":endHour, "Name":NameText.text!, "uid": Auth.auth().currentUser!.uid])
-//            db.collection("CalenderShifts").addDocument(data: ["Start Shift" : startDate2,"End Shift":endDate2, "Name": NameText.text!, "uid": Auth.auth().currentUser!.uid])
             
-            
-            }
+        }
         
     }
     
