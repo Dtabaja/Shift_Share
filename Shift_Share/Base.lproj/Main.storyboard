@@ -312,28 +312,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TJ8-Kb-bOy">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TJ8-Kb-bOy">
+                                <rect key="frame" x="0.0" y="88" width="414" height="718"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iO9-EK-f5O" customClass="FSCalendar">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="349"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="LnN-ng-nLf"/>
-                                        </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C7E-4r-ldK">
-                                        <rect key="frame" x="0.0" y="250" width="414" height="524"/>
+                                        <rect key="frame" x="0.0" y="369" width="394" height="349"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShiftListCalender" rowHeight="374" id="rHg-TP-ly3" customClass="CalenderLabels" customModule="Shift_Share" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="374"/>
+                                                <rect key="frame" x="0.0" y="28" width="394" height="374"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rHg-TP-ly3" id="QKh-UR-ZSk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="374"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="374"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="End Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ruv-Wo-LdQ" userLabel="End Label">
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="End Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ruv-Wo-LdQ" userLabel="End Label">
                                                             <rect key="frame" x="211" y="14" width="183" height="28"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -371,15 +368,20 @@
                                         </prototypes>
                                     </tableView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="iO9-EK-f5O" firstAttribute="trailing" secondItem="C7E-4r-ldK" secondAttribute="trailing" id="Clx-5B-uOS"/>
+                                    <constraint firstAttribute="trailing" secondItem="iO9-EK-f5O" secondAttribute="trailing" constant="20" id="nUT-nW-PF7"/>
+                                </constraints>
+                                <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="TJ8-Kb-bOy" firstAttribute="leading" secondItem="m1D-HA-AuM" secondAttribute="leading" id="5i8-XD-mHc"/>
-                            <constraint firstItem="TJ8-Kb-bOy" firstAttribute="top" secondItem="m1D-HA-AuM" secondAttribute="top" id="F3b-qe-w56"/>
+                            <constraint firstItem="m1D-HA-AuM" firstAttribute="bottom" secondItem="TJ8-Kb-bOy" secondAttribute="bottom" constant="56" id="HWF-0j-WGI"/>
                             <constraint firstItem="TJ8-Kb-bOy" firstAttribute="leading" secondItem="m1D-HA-AuM" secondAttribute="leading" id="NvS-Sm-eiw"/>
-                            <constraint firstItem="m1D-HA-AuM" firstAttribute="bottom" secondItem="TJ8-Kb-bOy" secondAttribute="bottom" id="Ysn-Vg-0ZY"/>
                             <constraint firstItem="TJ8-Kb-bOy" firstAttribute="trailing" secondItem="m1D-HA-AuM" secondAttribute="trailing" id="gDj-49-PNK"/>
+                            <constraint firstItem="TJ8-Kb-bOy" firstAttribute="top" secondItem="m1D-HA-AuM" secondAttribute="top" id="ufq-zO-zEs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m1D-HA-AuM"/>
                     </view>

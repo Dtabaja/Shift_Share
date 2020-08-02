@@ -50,19 +50,23 @@ class CreateShiftViewController: UIViewController, UITextFieldDelegate {
             let formatterStart = DateFormatter()
             let formatterEnd = DateFormatter()
             let formatterCalender = DateFormatter()
-            let formatterHour = DateFormatter()
+            let formatterHourStart = DateFormatter()
+            let formatterHourEnd = DateFormatter()
+
             formatterStart.dateFormat = "'Start Shift: 'EEEE dd/MM/yyyy  HH:MM a"
             formatterEnd.dateFormat = "'End Shift: ' EEEE dd/MM/yyyy  HH:MM a"
             formatterCalender.dateFormat = "EEEE dd/MM/yyyy"
-            formatterHour.dateFormat = "HH:MM a"
+            formatterHourStart.dateFormat = "'Start:'HH:MM a"
+            formatterHourEnd.dateFormat = "'End:'EEEE HH:MM a"
+
             let startDate1 = formatterStart.string(from: startDatePicker.date)
             let endDate1 = formatterEnd.string(from: endDatePicker.date)
             
             let startDate2 = formatterCalender.string(from: startDatePicker.date)
             let endDate2 = formatterCalender.string(from: endDatePicker.date)
             
-            let startHour = formatterHour.string(from: startDatePicker.date)
-            let endHour = formatterHour.string(from: endDatePicker.date)
+            let startHour = formatterHourStart.string(from: startDatePicker.date)
+            let endHour = formatterHourEnd.string(from: endDatePicker.date)
 
             db.collection("Shifts").addDocument(data:["Start Shift" : startDate1,"End Shift":endDate1,"Start Date" : startDate2,"End Date":endDate2,"Start Hour" : startHour,"End Hour":endHour, "Name":NameText.text!, "uid": Auth.auth().currentUser!.uid])
 //            db.collection("CalenderShifts").addDocument(data: ["Start Shift" : startDate2,"End Shift":endDate2, "Name": NameText.text!, "uid": Auth.auth().currentUser!.uid])

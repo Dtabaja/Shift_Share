@@ -41,10 +41,7 @@ class HomeViewController: UIViewController
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
         @IBAction func didTapAdd() {
-            // show add vc
-           // guard let vc = storyboard?.instantiateViewController(identifier: "add") as? CreateShiftViewController else {
-             //   return
-            //}
+    
             self.performSegue(withIdentifier: "add", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,25 +50,10 @@ class HomeViewController: UIViewController
             if segue.identifier=="calender"{
                 _ = segue.destination as? CalenderViewController
             }
-         //   vc.title = "Create New Shift"
-       //     vc.navigationItem.largeTitleDisplayMode = .never
-           // vc.completion = { title, startDate, endDate in
-            //   DispatchQueue.main.async {
-                    //self.navigationController?.popToRootViewController(animated: true)
-//                    
-//                    let new = MyShifts(Name: self.name, startDate: self.startDate, endDate: self.endDate)
-//                    self.ShiftList.append(new)
-//                    self.tableView.reloadData()
-
-                  
-              //  }
-           // }
-         //   navigationController?.pushViewController(vc, animated: true)
-
+    
         }
     }
     func addtoTable(){
-      //  let new = MyShifts(Name: self.name, startDate: self.startDate, endDate: self.endDate)
         db.collection("Shifts").whereField("uid", isEqualTo: Auth.auth().currentUser!.uid).getDocuments { (querySnapshot, error) in
             if error != nil {
                 return
@@ -84,7 +66,7 @@ class HomeViewController: UIViewController
                     let startDate = document.get("Start Date") as! String
                     let uid = document.get("uid") as! String
                     self.ShiftList.append(MyShifts(Name: name, startShift: startShiftDate, endShift: endShiftDate, startDate: startDate, endDate: endDate, uid: uid))
-                  //  print(self.ShiftList)
+         
                 }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -96,19 +78,9 @@ class HomeViewController: UIViewController
     }
 
         @IBAction func didTppedCalender() {
-            //TODO: move to calender
             self.performSegue(withIdentifier: "calender", sender: self)
-//            guard let vc1 = storyboard?.instantiateViewController(identifier: "calender") as? CalenderViewController else {
-//                return
-//            }
-//             vc1.title = "Calender"
-//             vc1.navigationItem.largeTitleDisplayMode = .never
-//            navigationController?.pushViewController(vc1, animated: true)
         }
     
-
-      
-
     }
 
     extension HomeViewController: UITableViewDelegate {
@@ -143,11 +115,8 @@ class HomeViewController: UIViewController
             formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
             formatter2.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
 
-//            cell.textLabel?.text = formatter.string(from: startShift)
-//            cell.detailTextLabel?.text = formatter2.string(from: endShift)
-            
-             cell.textLabel?.text = startShift
-             cell.detailTextLabel?.text = endShift
+            cell.textLabel?.text = startShift
+            cell.detailTextLabel?.text = endShift
             cell.textLabel?.font = UIFont(name: "Arial", size: 15)
             cell.detailTextLabel?.font = UIFont(name: "Arial", size: 15)
             

@@ -27,9 +27,7 @@ class CalenderViewController: UIViewController, FSCalendarDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.reloadData()
-              
-
-        // Do any additional setup after loading the view.
+        
     }
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
@@ -74,32 +72,19 @@ class CalenderViewController: UIViewController, FSCalendarDelegate, UITableViewD
                     let name = self.ShiftList[indexPath.row].Name
                     let startShift = self.ShiftList[indexPath.row].startHour
                     let endShift = self.ShiftList[indexPath.row].endHour
-                    
-//
-//                    let formatter = DateFormatter()
-//                    let formatter2 = DateFormatter()
-//
-//                    formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
-//                    formatter2.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
 
-        
                      cell?.nameLabel?.text = name
                      cell?.startLabel?.text = startShift
                      cell?.endLabel?.text = endShift
         
 
                     cell?.nameLabel?.font = UIFont(name: "Arial", size: 15)
-                    cell?.startLabel?.font = UIFont(name: "Arial", size: 15)
-                    cell?.endLabel?.font = UIFont(name: "Arial", size: 15)
+                    cell?.startLabel?.font = UIFont(name: "Arial", size: 13)
+                    cell?.endLabel?.font = UIFont(name: "Arial", size: 13)
                     
                     return cell!
                 }
     
-    
-    
-    
-    
-        
         
     }
 class CalenderLabels: UITableViewCell{
