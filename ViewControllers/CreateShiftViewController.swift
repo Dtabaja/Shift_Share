@@ -21,7 +21,7 @@ class CreateShiftViewController: UIViewController, UITextFieldDelegate {
     var db = Firestore.firestore()
     
     
-    public var completion: ((String, Date, Date) -> Void)?
+   // public var completion: ((String, Date, Date) -> Void)?
     // var startShift:String = ""
     //   var endShift:String = ""
     
@@ -71,11 +71,17 @@ class CreateShiftViewController: UIViewController, UITextFieldDelegate {
 //            homeViewController?.endDate = endDatePicker.date
 //            homeViewController!.name = NameText.text!
             let formatter = DateFormatter()
+            let formatterCalender = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
+            formatterCalender.dateFormat = "EEEE dd/MM/yyyy"
             let startDate1 = formatter.string(from: startDatePicker.date)
             let endDate1 = formatter.string(from: endDatePicker.date)
+            
+            let startDate2 = formatterCalender.string(from: startDatePicker.date)
+            let endDate2 = formatterCalender.string(from: endDatePicker.date)
 
             db.collection("Shifts").addDocument(data:["Start Shift" : startDate1,"End Shift":endDate1, "Name": NameText.text!, "uid": Auth.auth().currentUser!.uid])
+            db.collection("CalenderShifts").addDocument(data: ["Start Shift" : startDate2,"End Shift":endDate2, "Name": NameText.text!, "uid": Auth.auth().currentUser!.uid])
             
             
             }

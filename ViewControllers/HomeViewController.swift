@@ -17,10 +17,10 @@ class HomeViewController: UIViewController
       @IBOutlet weak var tableView: UITableView!
 
         var ShiftList = [MyShifts]()
-        var name:String = ""
-        var startDate = Date()
-        var endDate = Date()
-        var userId = ""
+       // var name:String = ""
+      //  var startDate = Date()
+     //   var endDate = Date()
+    //    var userId = ""
         var db = Firestore.firestore()
 
         override func viewDidLoad() {
@@ -77,7 +77,7 @@ class HomeViewController: UIViewController
                     let endShiftDate = document.get("End Shift") as! String
                     let uid = document.get("uid") as! String
                     self.ShiftList.append(MyShifts(Name: name, startDate: startShiftDate, endDate: endShiftDate, uid: uid))
-                    print(self.ShiftList)
+                  //  print(self.ShiftList)
                 }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()

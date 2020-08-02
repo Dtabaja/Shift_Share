@@ -234,10 +234,10 @@
 			children = (
 				21B6A29F24C6190500146170 /* SignUpViewController.swift */,
 				21B6A2A124C6191400146170 /* LogInViewController.swift */,
-				21B6A2A324C6192200146170 /* HomeViewController.swift */,
-				21B6A28E24C612E800146170 /* ViewController.swift */,
-				21F08CE124C83ECB001254FD /* CalenderViewController.swift */,
 				21AC055924CD99DA00AA9016 /* CreateShiftViewController.swift */,
+				21B6A28E24C612E800146170 /* ViewController.swift */,
+				21B6A2A324C6192200146170 /* HomeViewController.swift */,
+				21F08CE124C83ECB001254FD /* CalenderViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
