@@ -17,5 +17,5 @@ Comment to guy
 
 Hope you enjoy.
 
-<img src="Welcome%20Game.jpeg" width="200" height="400">
+<img src="LogIn.jpeg" width="200" height="400">
 
