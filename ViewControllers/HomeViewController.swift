@@ -29,8 +29,13 @@ class HomeViewController: UIViewController
             tableView.dataSource = self
             addtoTable()
             tableView.reloadData()
-            
+        //    let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backPressed(_:)))
+            //navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         }
+//    @objc func backPressed(_ sender: Any){
+//        self.navigationController?.popViewController(animated: true)
+//
+//    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -75,8 +80,10 @@ class HomeViewController: UIViewController
                     let name = document.get("Name") as! String
                     let startShiftDate = document.get("Start Shift") as! String
                     let endShiftDate = document.get("End Shift") as! String
+                    let endDate = document.get("End Date") as! String
+                    let startDate = document.get("Start Date") as! String
                     let uid = document.get("uid") as! String
-                    self.ShiftList.append(MyShifts(Name: name, startDate: startShiftDate, endDate: endShiftDate, uid: uid))
+                    self.ShiftList.append(MyShifts(Name: name, startShift: startShiftDate, endShift: endShiftDate, startDate: startDate, endDate: endDate, uid: uid))
                   //  print(self.ShiftList)
                 }
                 DispatchQueue.main.async {
@@ -126,8 +133,8 @@ class HomeViewController: UIViewController
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "shiftCell", for: indexPath)
             
-            let startShift = self.ShiftList[indexPath.row].startDate
-            let endShift = self.ShiftList[indexPath.row].endDate
+            let startShift = self.ShiftList[indexPath.row].startShift
+            let endShift = self.ShiftList[indexPath.row].endShift
             
 
             let formatter = DateFormatter()
@@ -146,137 +153,18 @@ class HomeViewController: UIViewController
             
             return cell
         }
+        
+        
 
     }
 
 
     struct MyShifts {
         let Name: String
+        let startShift: String
+        let endShift: String
         let startDate: String
         let endDate: String
         let uid: String
     
 }
-//   var shiftCell: ShiftUtil?
-//   var shiftList =  [ShiftUtil]()
-//   var startShift:String = ""
-//   var endShift:String = ""
-//
-//    @IBOutlet weak var tableView: UITableView!
-//    let dataID = "key"
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//      //  tableView.reloadData()
-//        // Do any additional setup after loading the view.
-//     //   ShowShiftTable()
-//        print(startShift)
-//        print(endShift)
-//    }
-//    func addToShiftList(){
-//         shiftCell?.startDate = startShift
-//         shiftCell?.endDate = endShift
-//     }
-//}
-//
-//        //MARK: Delegate & DataSource Functions
-//extension HomeViewController: UITableViewDelegate{
-//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            tableView.deselectRow(at: indexPath, animated: true)
-//        }
-//
-//    }
-//extension HomeViewController: UITableViewDataSource{
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//                   return shiftList.count
-//               }
-//
-//               func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//                   let cell = self.tableView.dequeueReusableCell(withIdentifier: "ShiftList") as?ShiftTableViewCell
-//                   addToShiftList()
-//                   cell?.startShiftLabel.text = shiftList[indexPath.row].startDate
-//                   cell?.endShiftLabel.text = shiftList[indexPath.row].endDate
-//
-//
-//
-//                   return cell!
-//               }
-//    }
-//
-//
-//
-////        func ShowShiftTable(){
-////            shiftCell?.startDate = startShift
-////            shiftCell?.endDate = endShift
-////            shiftList.append(shiftCell!)
-////
-////
-//////            self.shiftList = readFromUserDF()
-//////            if(shiftCell != nil){
-//////            appendToShiftList(shiftCell:shiftCell!)
-//////
-//////            }
-////
-////
-////        }
-////        //MARK: UserDefaults Functions
-////        func readFromUserDF()-> [ShiftUtil]{
-////            if let data = UserDefaults.standard.data(forKey: dataID){
-////                do{
-////                    let JSONdecoder = JSONDecoder()
-////                    self.shiftList =
-////                        try
-////                            JSONdecoder.decode([ShiftUtil].self, from: data)
-////                    return self.shiftList
-////                }catch{
-////                    print("can't read from UserDefaults")
-////                }
-////
-////            }
-////            return [ShiftUtil]()
-////        }
-////
-////        func writeToUserDF(ShiftListarray:[ShiftUtil]){
-////            do{
-////                let JSONencoder = JSONEncoder()
-////                let data =
-////                    try
-////                        JSONencoder.encode(ShiftListarray)
-////                UserDefaults.standard.set(data, forKey: dataID)
-////                self.shiftList = readFromUserDF()
-////            }catch{
-////                print("can't write to UserDefaults")
-////            }
-////
-////
-////        }
-////        //MARK: appand and update score list
-////        func appendToShiftList(shiftCell:ShiftUtil){
-////                self.shiftList.append(shiftCell)
-////                //bsortHighScoreList()
-////               // writeToUserDF(highScoreListarray: self.shiftList)
-////
-////        }
-////
-////
-////
-////}
-//
-//
-//    //MARK: Inner Class
-//    class ShiftTableViewCell
-//    : UITableViewCell{
-//
-//
-//        @IBOutlet weak var startShiftLabel: UILabel!
-//
-//        @IBOutlet weak var endShiftLabel: UILabel!
-//
-//
-//}

@@ -16,7 +16,7 @@ class CalenderViewController: UIViewController, FSCalendarDelegate, UITableViewD
     
     @IBOutlet weak var calender: FSCalendar!
     var db = Firestore.firestore()
-    var ShiftList = [MyShifts]()
+    var ShiftList = [MyShiftHour]()
 
    
     @IBOutlet weak var tableView: UITableView!
@@ -27,7 +27,7 @@ class CalenderViewController: UIViewController, FSCalendarDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.reloadData()
-        
+              
 
         // Do any additional setup after loading the view.
     }
@@ -37,16 +37,16 @@ class CalenderViewController: UIViewController, FSCalendarDelegate, UITableViewD
         let string = formatter.string(from: date)
         self.ShiftList.removeAll()
         
-        db.collection("CalenderShifts").whereField("Start Shift", isEqualTo: string).getDocuments { (querySnapshot, error) in
+        db.collection("Shifts").whereField("Start Date", isEqualTo: string).getDocuments { (querySnapshot, error) in
                   if error != nil {
                       return
                   }else{
                       for document in querySnapshot!.documents{
                           let name = document.get("Name") as! String
-                          let startShiftDate = document.get("Start Shift") as! String
-                          let endShiftDate = document.get("End Shift") as! String
+                          let startHour = document.get("Start Hour") as! String
+                          let endHour = document.get("End Hour") as! String
                           let uid = document.get("uid") as! String
-                          self.ShiftList.append(MyShifts(Name: name, startDate: startShiftDate, endDate: endShiftDate, uid: uid))
+                          self.ShiftList.append(MyShiftHour(Name: name, startHour: startHour, endHour: endHour, uid: uid))
                         print(self.ShiftList)
                       }
                       DispatchQueue.main.async {
@@ -55,8 +55,7 @@ class CalenderViewController: UIViewController, FSCalendarDelegate, UITableViewD
                   }
               }
         
-        print("\(string)")
-        print(ShiftList)
+    
         
         
     }
@@ -69,30 +68,33 @@ class CalenderViewController: UIViewController, FSCalendarDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
                     let cell = tableView.dequeueReusableCell(withIdentifier: "ShiftListCalender", for: indexPath) as? CalenderLabels
                     
                     let name = self.ShiftList[indexPath.row].Name
-                    let startShift = self.ShiftList[indexPath.row].startDate
-                    let endShift = self.ShiftList[indexPath.row].endDate
+                    let startShift = self.ShiftList[indexPath.row].startHour
+                    let endShift = self.ShiftList[indexPath.row].endHour
                     
+//
+//                    let formatter = DateFormatter()
+//                    let formatter2 = DateFormatter()
+//
+//                    formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
+//                    formatter2.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
 
-                    let formatter = DateFormatter()
-                    let formatter2 = DateFormatter()
-                    
-                    formatter.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
-                    formatter2.dateFormat = "dd/MM/yyyy EEEE HH:MM a"
-
-                    
+        
                      cell?.nameLabel?.text = name
                      cell?.startLabel?.text = startShift
                      cell?.endLabel?.text = endShift
+        
 
                     cell?.nameLabel?.font = UIFont(name: "Arial", size: 15)
-                    cell?.startLabel?.font = UIFont(name: "Arial", size: 13)
-                    cell?.endLabel?.font = UIFont(name: "Arial", size: 13)
+                    cell?.startLabel?.font = UIFont(name: "Arial", size: 15)
+                    cell?.endLabel?.font = UIFont(name: "Arial", size: 15)
                     
                     return cell!
                 }
+    
     
     
     
@@ -102,20 +104,17 @@ class CalenderViewController: UIViewController, FSCalendarDelegate, UITableViewD
     }
 class CalenderLabels: UITableViewCell{
     
-//    @IBOutlet weak var endLabel: UILabel!
-//
-//    @IBOutlet weak var startLabel: UILabel!
-//
-//    @IBOutlet weak var nameLabel: UILabel!
-    
-    
+
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var startLabel: UILabel!
-    
     @IBOutlet weak var endLabel: UILabel!
-    
 }
-   
+       struct MyShiftHour {
+           let Name: String
+           let startHour: String
+           let endHour: String
+           let uid: String
+       
+   }
 
 
