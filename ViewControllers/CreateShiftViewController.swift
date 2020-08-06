@@ -45,33 +45,51 @@ class CreateShiftViewController: UIViewController, UITextFieldDelegate {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="Save"{
-            
-            let formatterStart = DateFormatter()
-            let formatterEnd = DateFormatter()
-            let formatterCalender = DateFormatter()
-            let formatterHourStart = DateFormatter()
-            let formatterHourEnd = DateFormatter()
-            
-            formatterStart.dateFormat = "'Start Shift: 'EEEE dd/MM/yyyy  HH:MM a"
-            formatterEnd.dateFormat = "'End Shift: ' EEEE dd/MM/yyyy  HH:MM a"
-            formatterCalender.dateFormat = "EEEE dd/MM/yyyy"
-            formatterHourStart.dateFormat = "'Start:'HH:MM a"
-            formatterHourEnd.dateFormat = "'End:'EEEE HH:MM a"
-            
-            let startDate1 = formatterStart.string(from: startDatePicker.date)
-            let endDate1 = formatterEnd.string(from: endDatePicker.date)
-            
-            let startDate2 = formatterCalender.string(from: startDatePicker.date)
-            let endDate2 = formatterCalender.string(from: endDatePicker.date)
-            
-            let startHour = formatterHourStart.string(from: startDatePicker.date)
-            let endHour = formatterHourEnd.string(from: endDatePicker.date)
-            
-            db.collection("Shifts").addDocument(data:["Start Shift" : startDate1,"End Shift":endDate1,"Start Date" : startDate2,"End Date":endDate2,"Start Hour" : startHour,"End Hour":endHour, "Name":NameText.text!, "uid": Auth.auth().currentUser!.uid])
-            
+            if(NameText.text == ""){
+                showAlert("Warning", "Please enter a name")
+                return
+            }else if(startDatePicker.date>endDatePicker.date)
+            {
+                showAlert("Warning", "Invalid Schedule")
+                return
+            }else{
+                let formatterStart = DateFormatter()
+                let formatterEnd = DateFormatter()
+                let formatterCalender = DateFormatter()
+                let formatterHourStart = DateFormatter()
+                let formatterHourEnd = DateFormatter()
+                
+                formatterStart.dateFormat = "'Start Shift: 'EEEE dd/MM/yyyy  HH:MM a"
+                formatterEnd.dateFormat = "'End Shift: ' EEEE dd/MM/yyyy  HH:MM a"
+                formatterCalender.dateFormat = "EEEE dd/MM/yyyy"
+                formatterHourStart.dateFormat = "'Start:'HH:MM a"
+                formatterHourEnd.dateFormat = "'End:'EEEE HH:MM a"
+                
+                let startDate1 = formatterStart.string(from: startDatePicker.date)
+                let endDate1 = formatterEnd.string(from: endDatePicker.date)
+                
+                let startDate2 = formatterCalender.string(from: startDatePicker.date)
+                let endDate2 = formatterCalender.string(from: endDatePicker.date)
+                
+                let startHour = formatterHourStart.string(from: startDatePicker.date)
+                let endHour = formatterHourEnd.string(from: endDatePicker.date)
+                
+                db.collection("Shifts").addDocument(data:["Start Shift" : startDate1,"End Shift":endDate1,"Start Date" : startDate2,"End Date":endDate2,"Start Hour" : startHour,"End Hour":endHour, "Name":NameText.text!, "uid": Auth.auth().currentUser!.uid])
+            }
         }
         
     }
     
+    func showAlert(_ title:String, _ message:String){
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(alertAction)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
 }
 
